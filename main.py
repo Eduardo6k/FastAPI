@@ -7,7 +7,7 @@ Created on Sun Jul 23 14:30:33 2023
 
 from fastapi import FastAPI
 from pydantic import BaseModel
-import mysql.connector
+
 
 app = FastAPI()
 
