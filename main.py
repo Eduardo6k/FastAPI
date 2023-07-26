@@ -28,7 +28,7 @@ def home():
     return "MINHA API ESTÁ NO AR"
 
 
- @app.post("/ml")
+@app.post("/ml")
 def Ml(inputs: Inputs) -> str:
     query = '''
         INSERT INTO sua_tabela (id, resource, user_id, topic, application_id, attempts, sent, received)
@@ -48,12 +48,14 @@ def Ml(inputs: Inputs) -> str:
     return "Dados inseridos com sucesso no banco de dados."
 
  
+
 db_config = {
     'user': 'root',
     'password': '3CdSQWBdD70V8AYhHa1D',
     'host': 'containers-us-west-165.railway.app',
     'database': 'railway'
 }
+
 def execute_query(query, args=None):
     connection = mysql.connector.connect(**db_config)
     cursor = connection.cursor()
