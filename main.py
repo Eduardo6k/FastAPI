@@ -28,7 +28,7 @@ def home():
 
 @app.post("/ml")
 def Ml(inputs: Inputs) -> str:
-   return inputs
+   return str(inputs)
  
 
    
