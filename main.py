@@ -22,37 +22,10 @@ def home():
 
 @app.post("/ml")
 def Ml(inputs: Inputs) -> str:
-    try:
-        query = "INSERT INTO teste (id, resource, user_id, topic, application_id, attempts, sent, received) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-        args = (
-            inputs.id,
-            inputs.resource,
-            inputs.user_id,
-            inputs.topic,
-            inputs.application_id,
-            inputs.attempts,
-            inputs.sent,
-            inputs.received
-        )
-        execute_query(query, args)
-        return "Dados inseridos com sucesso no banco de dados."
-    except Exception as e:
-        error_msg = "Ocorreu um erro interno no servidor."
-        print("Erro:", e)
-        traceback.print_exc()  # Imprimir rastreamento da exceção para obter mais detalhes
-        return error_msg
+    return str(inputs)
+   
 
 
-
-
-
-def execute_query(query, args=None):
-    connection = mysql.connector.connect(host="containers-us-west-165.railway.app",user="root",password="3CdSQWBdD70V8AYhHa1D",database="railway")
-    cursor = connection.cursor()
-    cursor.execute(query, args)
-    connection.commit()  # Adicionando o commit para efetivar a inserção
-    cursor.close()
-    connection.close()
 
 
 
