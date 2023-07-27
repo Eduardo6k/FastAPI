@@ -7,7 +7,7 @@ import traceback
 app = FastAPI()
 
 class Inputs(BaseModel):
-    _id: str
+    id: str
     resource: str
     user_id: int
     topic: str
