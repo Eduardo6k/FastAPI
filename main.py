@@ -38,7 +38,7 @@ def Ml(inputs: Inputs) -> str:
 
 
 def execute_query(query, args=None):
-    connection = mysql.connector.connect(host="containers-us-west-165.railway.app",user="root",password="3CdSQWBdD70V8AYhHa1D",database="railway",port="5656")
+    connection = mysql.connector.connect(host="containers-us-west-165.railway.app",user="root",password="3CdSQWBdD70V8AYhHa1D",database="railway",port=5656)
     cursor = connection.cursor()
     cursor.execute(query, args)
     connection.commit()  # Adicionando o commit para efetivar a inserção
