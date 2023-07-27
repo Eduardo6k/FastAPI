@@ -20,19 +20,23 @@ def home():
 
 @app.post("/ml")
 def Ml(inputs: Inputs) -> str:
-    query = "INSERT INTO webhookMl2 (id, resource, user_id, topic, application_id, attempts, sent, received) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-    args = (
-        inputs.id,
-        inputs.resource,
-        inputs.user_id,
-        inputs.topic,
-        inputs.application_id,
-        inputs.attempts,
-        inputs.sent,
-        inputs.received
-    )
-    execute_query(query, args)
-    return "Dados inseridos com sucesso no banco de dados."
+    try:
+        query = "INSERT INTO webhookMl2 (id, resource, user_id, topic, application_id, attempts, sent, received) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        args = (
+            inputs.id,
+            inputs.resource,
+            inputs.user_id,
+            inputs.topic,
+            inputs.application_id,
+            inputs.attempts,
+            inputs.sent,
+            inputs.received
+        )
+        execute_query(query, args)
+        return "Dados inseridos com sucesso no banco de dados."
+    except Exception as e:
+        print("Erro:", e)
+        return "Ocorreu um erro interno no servidor."
 
 
 
