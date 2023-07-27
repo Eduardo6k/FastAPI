@@ -31,7 +31,7 @@ def home():
 @app.post("/ml")
 def Ml(inputs: Inputs) -> str:
     query = '''
-        INSERT INTO WebhookML (id, resource, user_id, topic, application_id, attempts, sent, received)
+        INSERT INTO webhookML2 (id, resource, user_id, topic, application_id, attempts, sent, received)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
     '''
     args = (
