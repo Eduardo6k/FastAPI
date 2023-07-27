@@ -27,7 +27,7 @@ def Ml(inputs: Inputs) -> str:
     return str(inputs)
 
 
-@app.get("get")
+@app.get("/get")
 def get():
     return str(lista)
     
