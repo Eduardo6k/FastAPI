@@ -1,32 +1,22 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jul 23 14:30:33 2023
-
-@author: Eduar
-"""
-
 from fastapi import FastAPI
 from pydantic import BaseModel
 import mysql.connector
 
-
-
 app = FastAPI()
 
 class Inputs(BaseModel):
-  id : str   
-  resource: str
-  user_id: int
-  topic: str
-  application_id: int
-  attempts: int
-  sent: str
-  received: str
+    id: str
+    resource: str
+    user_id: int
+    topic: str
+    application_id: int
+    attempts: int
+    sent: str
+    received: str
 
 @app.get("/")
 def home():
     return "MINHA API ESTÁ NO AR"
-
 
 @app.post("/ml")
 def Ml(inputs: Inputs) -> str:
@@ -47,8 +37,6 @@ def Ml(inputs: Inputs) -> str:
     execute_query(query, args)
     return "Dados inseridos com sucesso no banco de dados."
 
- 
-
 db_config = {
     'user': 'root',
     'password': '3CdSQWBdD70V8AYhHa1D',
@@ -63,15 +51,7 @@ def execute_query(query, args=None):
         cursor.execute(query, args)
     else:
         cursor.execute(query)
-    result = cursor.fetchall()
+    connection.commit()  # Adicionando o commit para efetivar a inserção
     cursor.close()
     connection.close()
-    return result
 
-   
-
-
-
-    
-    
-    
