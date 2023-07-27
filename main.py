@@ -19,10 +19,19 @@ class Inputs(BaseModel):
 @app.get("/")
 def home():
     return "MINHA API ESTÁ NO AR"
-
+    
+lista = []
 @app.post("/ml")
 def Ml(inputs: Inputs) -> str:
+    lista.append(str(inputs))
     return str(inputs)
+
+
+@app.get("get")
+def get():
+    return str(lista)
+    
+    
    
 
 
