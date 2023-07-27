@@ -23,6 +23,7 @@ def home():
 lista = []
 @app.post("/ml")
 def Ml(inputs: Inputs) -> str:
+    lista.clear()
     lista.append(str(inputs))
     return str(inputs)
 
