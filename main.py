@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import mysql.connector
+import traceback
+
 
 app = FastAPI()
 
@@ -35,8 +37,11 @@ def Ml(inputs: Inputs) -> str:
         execute_query(query, args)
         return "Dados inseridos com sucesso no banco de dados."
     except Exception as e:
+        error_msg = "Ocorreu um erro interno no servidor."
         print("Erro:", e)
-        return "Ocorreu um erro interno no servidor."
+        traceback.print_exc()  # Imprimir rastreamento da exceção para obter mais detalhes
+        return error_msg
+
 
 
 
