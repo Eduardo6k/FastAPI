@@ -23,10 +23,13 @@ def home():
 lista = []
 @app.post("/ml")
 def Ml(inputs: Inputs) -> str:
+    # Verificar se o campo _id está presente
+    if inputs._id is None:
+        return "O campo _id é obrigatório."
+    
     lista.clear()
     lista.append(str(inputs))
     return str(inputs)
-
 
 @app.get("/get")
 def get():
